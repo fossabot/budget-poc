@@ -8,3 +8,18 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+
+coverage:
+    enabled: true
+    include:
+        - public/*
+        - src/*
+    remote: false
+
+modules:
+    config:
+        WebDriver:
+            url: 'http://web/'
+            host: 'selenium'
+            port: 4444
+            browser: chrome
