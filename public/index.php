@@ -1,8 +1,11 @@
 <?php
-
 use App\Kernel;
 use Symfony\Component\Debug\Debug;
 use Symfony\Component\HttpFoundation\Request;
+
+if (is_file(dirname(__DIR__).'/c3.php')) {
+    require dirname(__DIR__) . '/c3.php';
+}
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
