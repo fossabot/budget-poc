@@ -1,0 +1,14 @@
+{
+    "name": "jeckel-lab/budget",
+    "description": "Jeckel-Lab's budget analytics",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julien Mercier-Rojas",
+            "email": "julien@jeckel-lab.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
