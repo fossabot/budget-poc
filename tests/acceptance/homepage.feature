@@ -3,4 +3,4 @@ Feature: Homepage
 
   Scenario: try homepage
     Given I am on "/"
-    Then I should see "Hello World"
+    Then I should see "Welcome"

@@ -2,3 +2,13 @@
 /jeckel-lab-budget.iml
 /vendor/
 /.phpcs-cache
+/.env
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###

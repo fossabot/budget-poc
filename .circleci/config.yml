@@ -52,7 +52,7 @@ jobs:
                   command: docker-compose up -d web fpm selenium
             - run:
                   name: Run codeception
-                  command: docker-compose run --rm codeception wait-for.sh selenium:4444 -- ./vendor/bin/codecept run --coverage --coverage-html --coverage-xml
+                  command: docker-compose run --rm codeception wait-for-it.sh selenium:4444 -- ./vendor/bin/codecept run --coverage --coverage-html --coverage-xml
 
             - codecov/upload:
                   file: tests/_output/coverage.xml
