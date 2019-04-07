@@ -14,3 +14,11 @@ test:
 
 phpstan:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/phpstan analyse
+
+phpcs:
+	@docker-compose run --rm --no-deps codeception vendor/bin/phpcs
+
+phpmd:
+	@docker-compose run --rm --no-deps codeception vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode
+
+qa: test phpstan phpcs phpmd
