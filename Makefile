@@ -1,4 +1,4 @@
-.PHONY: up composer codeception
+.PHONY: up composer codeception test phpstan
 
 up:
 	@docker-compose up
@@ -11,3 +11,6 @@ codeception:
 
 test:
 	@docker-compose run --rm codeception ./vendor/bin/codecept run
+
+phpstan:
+	@docker-compose run --rm --no-deps codeception ./vendor/bin/phpstan analyse
