@@ -26,7 +26,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: passwd
-      POSTGRES_DB: sample_db
+      POSTGRES_DB: budget
     volumes:
       - ./docker/postgres:/docker-entrypoint-initdb.d
 
