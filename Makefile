@@ -12,6 +12,9 @@ codeception:
 test:
 	@docker-compose run --rm codeception ./vendor/bin/codecept run
 
+test-cover:
+	@docker-compose run --rm codeception ./vendor/bin/codecept run --coverage --coverage-html
+
 phpstan:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/phpstan analyse
 
