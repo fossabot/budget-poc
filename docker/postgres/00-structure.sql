@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS client CASCADE;
 CREATE TABLE client (
     client_id uuid PRIMARY KEY,
-    name VARCHAR(255)
+    name VARCHAR(255) NOT NULL
 );
 
 DROP TABLE IF EXISTS invoice CASCADE;
