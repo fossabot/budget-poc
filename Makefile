@@ -1,7 +1,10 @@
-.PHONY: up composer codeception test phpstan
+.PHONY: up conole composer codeception test test-cover phpstan phpcs phpmd qa
 
 up:
 	@docker-compose up
+
+console:
+	@docker-compose run --rm codeception bin/console ${CMD}
 
 composer:
 	@docker-compose run --rm --no-deps codeception composer ${CMD}

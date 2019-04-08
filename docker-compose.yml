@@ -14,10 +14,14 @@ services:
       - "80:80"
 
   fpm:
-    image: jeckel/php-test:7.3-fpm-alpine
+#    image: jeckel/php-test:7.3-fpm-alpine
+    build:
+      context: ./docker/fpm
     volumes:
       - ./:/var/www/project/
     working_dir: /var/www/project/
+    environment:
+      DATABASE_URL: "pgsql://user:passwd@postgres:5432/budget"
     depends_on:
       - postgres
 
@@ -29,6 +33,8 @@ services:
       POSTGRES_DB: budget
     volumes:
       - ./docker/postgres:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
 
   selenium:
     build:
@@ -38,7 +44,9 @@ services:
       - web
 
   codeception:
-    image: jeckel/php-test:7.3-cli-alpine
+#    image: jeckel/php-test:7.3-cli-alpine
+    build:
+      context: ./docker/codeception
     environment:
       SELENIUM_HOST: "selenium:4444"
       COMPOSER_AUTH: ${COMPOSER_AUTH:-""}
