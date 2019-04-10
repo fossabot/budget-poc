@@ -1,4 +1,8 @@
-.PHONY: up conole composer codeception test test-cover phpstan phpcs phpmd qa
+.PHONY: install up conole composer codeception test test-cover phpstan phpcs phpmd qa snippets
+
+install:
+	@docker-compose pull
+	@docker-compose build --pull
 
 up:
 	@docker-compose up
@@ -13,7 +17,7 @@ codeception:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/codecept ${CMD}
 
 test:
-	@docker-compose run --rm codeception ./vendor/bin/codecept run
+	@docker-compose run --rm codeception ./vendor/bin/codecept run -vvv
 
 test-cover:
 	@docker-compose run --rm codeception ./vendor/bin/codecept run --coverage --coverage-html
@@ -28,3 +32,6 @@ phpmd:
 	@docker-compose run --rm --no-deps codeception vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode
 
 qa: test phpstan phpcs phpmd
+
+snippets:
+	@docker-compose run --rm codeception ./vendor/bin/codecept gherkin:snippets
