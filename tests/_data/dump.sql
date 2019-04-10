@@ -1,0 +1,2 @@
+TRUNCATE client CASCADE;
+TRUNCATE invoice CASCADE;
