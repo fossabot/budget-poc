@@ -8,10 +8,6 @@
 - [ ] Visualize where we stand against year objective
 - [ ] Optional : import invoices from Tiime application
 
-Current objectives :
-- month : 10 k€
-- year : 100 k€
-
 # Architecture
 
 - Database : Postgres

@@ -5,7 +5,12 @@
 # If you need both WebDriver and PHPBrowser tests - create a separate suite.
 
 actor: AcceptanceTester
+
 modules:
     enabled:
         - \Test\Support\Helper\Acceptance
+        - Db
+        - \Jeckel\GherkinHelper\WebdriverHelper:
+            depends:
+                - WebDriver
         - WebDriver

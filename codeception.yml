@@ -19,6 +19,17 @@ coverage:
 
 modules:
     config:
+        Db:
+            dsn: 'pgsql:host=postgres;dbname=budget'
+            user: user
+            password: passwd
+#            dsn: 'pgsql:host=%POSTGRES_HOST%;dbname=%POSTGRES_DB%'
+#            user: '%POSTGRES_USER%'
+#            password: '%POSTGRES_PASSWORD%'
+            populate: true # run populator before all tests
+            cleanup: false # run populator before each test
+            dump: 'tests/_data/dump.sql'
+#        \Codeception\Module\WebDriver:
         WebDriver:
             url: 'http://web/'
             host: 'selenium'
