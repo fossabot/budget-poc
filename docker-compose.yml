@@ -1,5 +1,14 @@
 version: '3.5'
 
+# Configure a secondary network for traefik
+# - "default"
+# - "trafik" which is an external network, define to root connection from traefik reverse proxy
+#
+networks:
+  traefik:
+    external:
+      name: ${TRAEFIK_NETWORK:-traefik_proxy}
+
 # Define services
 #
 services:
@@ -10,8 +19,15 @@ services:
       - ./:/var/www/project/
     depends_on:
       - fpm
-    ports:
-      - "80:80"
+    labels:
+      traefik.port: "80"
+      traefik.enable: "true"
+      traefik.frontend.rule: "Host:${HOSTNAME:-budget.local}"
+      traefik.docker.network: "${TRAEFIK_NETWORK:-traefik_proxy}"
+      traefik.frontend.priority: "1"
+    networks:
+      default:
+      traefik:
 
   fpm:
     build:
@@ -23,6 +39,8 @@ services:
       DATABASE_URL: "pgsql://user:passwd@postgres:5432/budget"
     depends_on:
       - postgres
+    networks:
+      default:
 
   postgres:
     image: postgres
@@ -34,6 +52,8 @@ services:
       - ./docker/postgres:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
+    networks:
+      default:
 
   selenium:
     build:
@@ -41,6 +61,8 @@ services:
       shm_size: 2gb
     depends_on:
       - web
+    networks:
+      default:
 
   codeception:
     build:
@@ -58,4 +80,6 @@ services:
     depends_on:
       - web
       - selenium
-    command: ./vendor/bin/codecept run --coverage --coverage-html
+#    command: ./vendor/bin/codecept run --coverage
+    networks:
+      default:
