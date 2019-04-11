@@ -60,7 +60,7 @@ jobs:
       - run:
           name: Launch services
           command: |
-            docker network create traefik
+            docker network create traefik_proxy
             docker-compose up -d web fpm selenium
       - run:
           name: Run codeception
