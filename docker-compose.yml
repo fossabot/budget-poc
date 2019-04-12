@@ -54,6 +54,7 @@ services:
       - "5432:5432"
     networks:
       default:
+      traefik:
 
   selenium:
     build:
