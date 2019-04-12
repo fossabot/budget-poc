@@ -2695,16 +2695,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "305a6cd75a54992f47f46eb655245b6c9a06997a"
+                "reference": "41c5b29e07778942a76e7a22dbc3f6d62a42dc6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/305a6cd75a54992f47f46eb655245b6c9a06997a",
-                "reference": "305a6cd75a54992f47f46eb655245b6c9a06997a",
+                "url": "https://api.github.com/repos/symfony/flex/zipball/41c5b29e07778942a76e7a22dbc3f6d62a42dc6e",
+                "reference": "41c5b29e07778942a76e7a22dbc3f6d62a42dc6e",
                 "shasum": ""
             },
             "require": {
@@ -2740,7 +2740,7 @@
                 }
             ],
             "description": "Composer plugin for Symfony",
-            "time": "2019-04-03T17:16:03+00:00"
+            "time": "2019-04-11T12:36:26+00:00"
         },
         {
             "name": "symfony/form",
@@ -5637,12 +5637,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeckel/codeception-gherkin-helpers.git",
-                "reference": "cae8b5ce6e439246d020aef38aef50254794f72f"
+                "reference": "c1198e487651973602a0cc5a9f6db6cb3caf94c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeckel/codeception-gherkin-helpers/zipball/cae8b5ce6e439246d020aef38aef50254794f72f",
-                "reference": "cae8b5ce6e439246d020aef38aef50254794f72f",
+                "url": "https://api.github.com/repos/jeckel/codeception-gherkin-helpers/zipball/c1198e487651973602a0cc5a9f6db6cb3caf94c9",
+                "reference": "c1198e487651973602a0cc5a9f6db6cb3caf94c9",
                 "shasum": ""
             },
             "require": {
@@ -5657,7 +5657,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Jeckel\\GherkinHelper\\": "src/"
+                    "Jeckel\\Gherkin\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5671,7 +5671,7 @@
                 }
             ],
             "description": "A collection of Codeception Helpers for Gherkin BDD tests",
-            "time": "2019-04-10T19:54:43+00:00"
+            "time": "2019-04-11T08:11:29+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -7831,16 +7831,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa"
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5b4333b4010625d29580eb4a41f1e53251be6baa",
-                "reference": "5b4333b4010625d29580eb4a41f1e53251be6baa",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
                 "shasum": ""
             },
             "require": {
@@ -7878,7 +7878,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-03-19T03:22:27+00:00"
+            "time": "2019-04-10T23:49:02+00:00"
         },
         {
             "name": "symfony/browser-kit",
