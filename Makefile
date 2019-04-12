@@ -35,3 +35,7 @@ qa: test phpstan phpcs phpmd
 
 snippets:
 	@docker-compose run --rm codeception ./vendor/bin/codecept gherkin:snippets
+
+
+.DEFAULT:
+	@docker-compose run --rm codeception bin/console $@

@@ -19,11 +19,11 @@ class AppUserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $user = new AppUser();
-
-        $user->setPassword($this->passwordEncoder->encodePassword(
-            $user,
-            'the_new_password'
-        ));
+        $user->setEmail('foo@bar.com')
+            ->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                'password'
+            ));
         $manager->persist($user);
         $manager->flush();
     }
