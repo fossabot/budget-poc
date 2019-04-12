@@ -54,9 +54,10 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
-          name: Pull images
+          name: Pull and build images
           command: |
             docker-compose pull
+            docker-compose build
       - run:
           name: Launch services
           command: |
