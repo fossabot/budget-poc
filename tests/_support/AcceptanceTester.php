@@ -1,6 +1,9 @@
 <?php
 namespace Test\Support;
 
+use Behat\Behat\Context\Context;
+use Codeception\Actor;
+
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -16,7 +19,20 @@ namespace Test\Support;
  *
  * @SuppressWarnings(PHPMD)
 */
-class AcceptanceTester extends \Codeception\Actor
+class AcceptanceTester extends Actor implements Context
 {
     use _generated\AcceptanceTesterActions;
+
+    /**
+     * @Given I am logged as :email with password :password
+     * @param string $email
+     * @param string $password
+     */
+    public function iAmAmLogged(string $email, string $password)
+    {
+        $this->amOnPage('/login');
+        $this->fillField('email', $email);
+        $this->fillField('password', $password);
+        $this->click('Sign in');
+    }
 }
