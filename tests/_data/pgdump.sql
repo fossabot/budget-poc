@@ -2,6 +2,11 @@
 -- PostgreSQL database dump
 --
 
+DROP TABLE IF EXISTS public.app_user CASCADE;
+DROP TABLE IF EXISTS public.client CASCADE;
+DROP TABLE IF EXISTS public.invoice CASCADE;
+
+
 -- Dumped from database version 11.2 (Debian 11.2-1.pgdg90+1)
 -- Dumped by pg_dump version 11.2 (Debian 11.2-1.pgdg90+1)
 
