@@ -1,3 +1,8 @@
+[![CircleCI](https://circleci.com/gh/jeckel/budget-poc.svg?style=svg)](https://circleci.com/gh/jeckel/budget-poc)
+[![codecov](https://codecov.io/gh/jeckel/budget-poc/branch/master/graph/badge.svg)](https://codecov.io/gh/jeckel/budget-poc)
+[![Twitter](https://img.shields.io/badge/Twitter-%40jeckel4-blue.svg)](https://twitter.com/jeckel4)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Julien%20Mercier--Rojas-blue.svg)](https://www.linkedin.com/in/jeckel/)
+
 # Jeckel-Lab's Budget
 
 # Project objectives:
