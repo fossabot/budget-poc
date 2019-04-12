@@ -54,13 +54,16 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
-          name: Pull images
+          name: Pull and build images
           command: |
             docker-compose pull
+            docker-compose build
       - run:
           name: Launch services
           command: |
-            docker network create traefik_proxy
+            if [ `docker network ls | grep -c -w traefik_proxy` -eq 0 ]; then
+                docker network create traefik_proxy
+            fi
             docker-compose up -d web fpm selenium
       - run:
           name: Run codeception

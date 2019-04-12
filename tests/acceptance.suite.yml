@@ -10,7 +10,7 @@ modules:
     enabled:
         - \Test\Support\Helper\Acceptance
         - Db
-        - \Jeckel\GherkinHelper\WebdriverHelper:
+        - \Jeckel\Gherkin\WebdriverHelper:
             depends:
                 - WebDriver
         - WebDriver

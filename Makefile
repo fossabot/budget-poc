@@ -35,3 +35,9 @@ qa: test phpstan phpcs phpmd
 
 snippets:
 	@docker-compose run --rm codeception ./vendor/bin/codecept gherkin:snippets
+
+dumpdb:
+	@docker-compose exec -e PGPASSWORD=passwd postgres pg_dump -U user budget > tests/_data/pgdump.sql
+
+.DEFAULT:
+	@docker-compose run --rm codeception bin/console $@
