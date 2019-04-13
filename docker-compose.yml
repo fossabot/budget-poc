@@ -27,6 +27,8 @@ services:
       traefik.frontend.priority: "1"
     networks:
       default:
+        aliases:
+          - test.${HOSTNAME:-budget.local}
       traefik:
 
   fpm:
@@ -37,6 +39,7 @@ services:
     working_dir: /var/www/project/
     environment:
       DATABASE_URL: "pgsql://user:passwd@postgres:5432/budget"
+      DATABASE_TEST_URL: "pgsql://user:passwd@postgres:5432/budget_test"
     depends_on:
       - postgres
     networks:
@@ -69,18 +72,20 @@ services:
     build:
       context: ./docker/codeception
     environment:
-      SELENIUM_HOST: "selenium:4444"
+      SELENIUM_HOST: selenium
       COMPOSER_AUTH: ${COMPOSER_AUTH:-""}
       POSTGRES_HOST: postgres
-      POSTGRES_DB: budget
+      POSTGRES_DB: budget_test
       POSTGRES_USER: user
       POSTGRES_PASSWORD: passwd
+      DATABASE_URL: "pgsql://user:passwd@postgres:5432/budget"
+      DATABASE_TEST_URL: "pgsql://user:passwd@postgres:5432/budget_test"
+      APP_HOSTNAME: test.${HOSTNAME:-budget.local}
     volumes:
       - ./:/var/www/project/
     working_dir: /var/www/project/
     depends_on:
       - web
       - selenium
-#    command: ./vendor/bin/codecept run --coverage
     networks:
       default:
