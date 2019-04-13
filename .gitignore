@@ -1,5 +1,5 @@
 /.idea
-/jeckel-lab-budget.iml
+/*.iml
 /vendor/
 /.phpcs-cache
 /.env
