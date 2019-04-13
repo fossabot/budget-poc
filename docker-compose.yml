@@ -27,6 +27,8 @@ services:
       traefik.frontend.priority: "1"
     networks:
       default:
+        aliases:
+          - test.budget.local
       traefik:
 
   fpm:

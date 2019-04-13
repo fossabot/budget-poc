@@ -31,7 +31,7 @@ modules:
             dump: 'tests/_data/pgdump.sql'
 #        \Codeception\Module\WebDriver:
         WebDriver:
-            url: 'http://web/'
+            url: 'http://test.budget.local/'
             host: 'selenium'
             port: 4444
             browser: chrome
