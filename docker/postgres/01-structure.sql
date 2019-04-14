@@ -29,5 +29,7 @@ CREATE TABLE app_user(
     email VARCHAR(180) NOT NULL,
     roles JSON NOT NULL,
     password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     UNIQUE(email)
 );

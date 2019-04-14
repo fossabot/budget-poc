@@ -6,7 +6,6 @@ DROP TABLE IF EXISTS public.app_user CASCADE;
 DROP TABLE IF EXISTS public.client CASCADE;
 DROP TABLE IF EXISTS public.invoice CASCADE;
 
-
 -- Dumped from database version 11.2 (Debian 11.2-1.pgdg90+1)
 -- Dumped by pg_dump version 11.2 (Debian 11.2-1.pgdg90+1)
 
@@ -32,7 +31,9 @@ CREATE TABLE public.app_user (
     app_user_id uuid NOT NULL,
     email character varying(180) NOT NULL,
     roles json NOT NULL,
-    password character varying(255) NOT NULL
+    password character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone NOT NULL,
+    updated_at timestamp(0) without time zone NOT NULL
 );
 
 
@@ -45,8 +46,8 @@ ALTER TABLE public.app_user OWNER TO "user";
 CREATE TABLE public.client (
     client_id uuid NOT NULL,
     name character varying(255) NOT NULL,
-    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
-    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
+    created_at timestamp(0) without time zone NOT NULL,
+    updated_at timestamp(0) without time zone NOT NULL
 );
 
 
@@ -64,8 +65,8 @@ CREATE TABLE public.invoice (
     paid_at date,
     amount_ht integer NOT NULL,
     amount_ttc integer NOT NULL,
-    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
-    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
+    created_at timestamp(0) without time zone NOT NULL,
+    updated_at timestamp(0) without time zone NOT NULL
 );
 
 
@@ -75,8 +76,8 @@ ALTER TABLE public.invoice OWNER TO "user";
 -- Data for Name: app_user; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.app_user (app_user_id, email, roles, password) FROM stdin;
-4d8d9899-438f-4f38-802f-6dd1e360cbde	foo@bar.com	[]	$argon2i$v=19$m=1024,t=2,p=2$Ukp4VUZtTDd0N3lQWmNIcw$GYwKda+aVuyscQuxgvzJ3iMavVJZDTMxdtM3vqYAg9w
+COPY public.app_user (app_user_id, email, roles, password, created_at, updated_at) FROM stdin;
+46d8faa9-f568-43ce-9043-193739dc7560	foo@bar.com	[]	$argon2i$v=19$m=1024,t=2,p=2$STZlYThYbjNaWjhLT1NIdw$MneC9DPXfux0rWh4areQE2rY3GCVJnyUbHmHKkR4Lj0	2019-04-14 15:08:39	2019-04-14 15:08:39
 \.
 
 
@@ -84,7 +85,7 @@ COPY public.app_user (app_user_id, email, roles, password) FROM stdin;
 -- Data for Name: client; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.client (client_id, name) FROM stdin;
+COPY public.client (client_id, name, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -92,7 +93,7 @@ COPY public.client (client_id, name) FROM stdin;
 -- Data for Name: invoice; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.invoice (invoice_id, client_id, number, sent_at, paid_at, amount_ht, amount_ttc) FROM stdin;
+COPY public.invoice (invoice_id, client_id, number, sent_at, paid_at, amount_ht, amount_ttc, created_at, updated_at) FROM stdin;
 \.
 
 
