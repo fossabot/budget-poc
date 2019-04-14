@@ -17,10 +17,16 @@ codeception:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/codecept ${CMD}
 
 test:
-	@docker-compose run --rm codeception ./vendor/bin/codecept run -vvv
+	@docker-compose run --rm codeception ./vendor/bin/codecept run
 
 test-cover:
 	@docker-compose run --rm codeception ./vendor/bin/codecept run --coverage --coverage-html
+
+test-unit:
+	@docker-compose run --rm --no-deps codeception ./vendor/bin/codecept run unit
+
+test-acceptance:
+	@docker-compose run --rm codeception ./vendor/bin/codecept run -vvv acceptance
 
 phpstan:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/phpstan analyse
