@@ -35,4 +35,4 @@ services:
 #    App\Service\TimeServiceInterface: '@App\Service\TimeService'
     App\Service\ClockInterface:
         factory: 'App\Service\ClockFactory:getClock'
-        arguments: ['%frozen_clock%']
+        arguments: ['%frozen_clock%', '%frozen_clock_file%']
