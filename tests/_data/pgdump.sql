@@ -44,7 +44,9 @@ ALTER TABLE public.app_user OWNER TO "user";
 
 CREATE TABLE public.client (
     client_id uuid NOT NULL,
-    name character varying(255) NOT NULL
+    name character varying(255) NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
 );
 
 
