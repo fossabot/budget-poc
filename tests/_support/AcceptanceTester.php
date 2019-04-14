@@ -35,4 +35,13 @@ class AcceptanceTester extends Actor implements Context
         $this->fillField('password', $password);
         $this->click('Sign in');
     }
+
+    /**
+     * @Given I set frozen clock to :clock
+     * @param string $clock
+     */
+    public function iSetFrozenClockTo(string $clock)
+    {
+        file_put_contents(codecept_root_dir().'/var/clock', $clock);
+    }
 }

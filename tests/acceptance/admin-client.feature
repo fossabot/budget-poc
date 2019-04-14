@@ -15,8 +15,10 @@ Feature: Admin client
   Scenario: Add a client
     Given I am logged as "foo@bar.com" with password "password"
     And I am on page "/"
+    And I set frozen clock to "2018-12-11 12:00:00"
     When I click "Add Client"
     And I fill field "Name" with "My new client"
     And I click "Save changes"
     Then I should see "My new client"
+    And I should see "11/12/2018 12:00"
     And I should not see "No results found."
