@@ -63,7 +63,9 @@ CREATE TABLE public.invoice (
     sent_at date,
     paid_at date,
     amount_ht integer NOT NULL,
-    amount_ttc integer NOT NULL
+    amount_ttc integer NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
 );
 
 

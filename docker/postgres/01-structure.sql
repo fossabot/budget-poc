@@ -15,6 +15,8 @@ CREATE TABLE invoice(
     paid_at DATE NULL,
     amount_ht INT NOT NULL,
     amount_ttc INT NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     UNIQUE(number)
 );
 
