@@ -3,6 +3,7 @@ namespace App\EventSubscriber;
 
 use App\Doctrine\CreatedAtInterface;
 use App\Doctrine\UpdatedAtInterface;
+use App\Service\TimeServiceInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -13,6 +14,21 @@ use Doctrine\ORM\Events;
  */
 class EntityEventSubscriber implements EventSubscriber
 {
+    /** @var TimeServiceInterface */
+    protected $timeService;
+
+    /**
+     * EntityEventSubscriber constructor.
+     * @param TimeServiceInterface $timeService
+     */
+    public function __construct(TimeServiceInterface $timeService)
+    {
+        $this->timeService = $timeService;
+    }
+
+    /**
+     * @return array|string[]
+     */
     public function getSubscribedEvents()
     {
         return [
@@ -21,6 +37,9 @@ class EntityEventSubscriber implements EventSubscriber
         ];
     }
 
+    /**
+     * @param LifecycleEventArgs $args
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
@@ -33,6 +52,9 @@ class EntityEventSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @param LifecycleEventArgs $args
+     */
     public function preUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getObject();
@@ -42,13 +64,19 @@ class EntityEventSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * @param CreatedAtInterface $entity
+     */
     protected function setCreatedAt(CreatedAtInterface $entity)
     {
-        $entity->setCreatedAt(new \DateTime());
+        $entity->setCreatedAt($this->timeService->getCurrentDateTime());
     }
 
+    /**
+     * @param UpdatedAtInterface $entity
+     */
     protected function setUpdatedAt(UpdatedAtInterface $entity)
     {
-        $entity->setUpdatedAt(new \DateTime());
+        $entity->setUpdatedAt($this->timeService->getCurrentDateTime());
     }
 }
