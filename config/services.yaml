@@ -30,3 +30,9 @@ services:
     App\EventSubscriber\EntityEventSubscriber:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
+
+    # Define interface implementations
+#    App\Service\TimeServiceInterface: '@App\Service\TimeService'
+    App\Service\ClockInterface:
+        factory: 'App\Service\ClockFactory:getClock'
+        arguments: ['%frozen_clock%']

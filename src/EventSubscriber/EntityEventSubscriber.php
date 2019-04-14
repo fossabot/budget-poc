@@ -3,7 +3,7 @@ namespace App\EventSubscriber;
 
 use App\Doctrine\CreatedAtInterface;
 use App\Doctrine\UpdatedAtInterface;
-use App\Service\TimeServiceInterface;
+use App\Service\ClockInterface;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -14,14 +14,14 @@ use Doctrine\ORM\Events;
  */
 class EntityEventSubscriber implements EventSubscriber
 {
-    /** @var TimeServiceInterface */
+    /** @var ClockInterface */
     protected $timeService;
 
     /**
      * EntityEventSubscriber constructor.
-     * @param TimeServiceInterface $timeService
+     * @param ClockInterface $timeService
      */
-    public function __construct(TimeServiceInterface $timeService)
+    public function __construct(ClockInterface $timeService)
     {
         $this->timeService = $timeService;
     }
@@ -69,7 +69,7 @@ class EntityEventSubscriber implements EventSubscriber
      */
     protected function setCreatedAt(CreatedAtInterface $entity)
     {
-        $entity->setCreatedAt($this->timeService->getCurrentDateTime());
+        $entity->setCreatedAt($this->timeService->now());
     }
 
     /**
@@ -77,6 +77,6 @@ class EntityEventSubscriber implements EventSubscriber
      */
     protected function setUpdatedAt(UpdatedAtInterface $entity)
     {
-        $entity->setUpdatedAt($this->timeService->getCurrentDateTime());
+        $entity->setUpdatedAt($this->timeService->now());
     }
 }
