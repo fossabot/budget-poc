@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS client CASCADE;
 CREATE TABLE client (
     client_id uuid PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL
 );
 
 DROP TABLE IF EXISTS invoice CASCADE;
@@ -13,6 +15,8 @@ CREATE TABLE invoice(
     paid_at DATE NULL,
     amount_ht INT NOT NULL,
     amount_ttc INT NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     UNIQUE(number)
 );
 
@@ -25,5 +29,7 @@ CREATE TABLE app_user(
     email VARCHAR(180) NOT NULL,
     roles JSON NOT NULL,
     password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
+    updated_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL,
     UNIQUE(email)
 );

@@ -17,10 +17,16 @@ codeception:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/codecept ${CMD}
 
 test:
-	@docker-compose run --rm codeception ./vendor/bin/codecept run -vvv
+	@docker-compose run --rm codeception ./vendor/bin/codecept run
 
 test-cover:
 	@docker-compose run --rm codeception ./vendor/bin/codecept run --coverage --coverage-html
+
+test-unit:
+	@docker-compose run --rm --no-deps codeception ./vendor/bin/codecept run unit
+
+test-acceptance:
+	@docker-compose run --rm codeception ./vendor/bin/codecept run -vvv acceptance
 
 phpstan:
 	@docker-compose run --rm --no-deps codeception ./vendor/bin/phpstan analyse
@@ -29,7 +35,7 @@ phpcs:
 	@docker-compose run --rm --no-deps codeception vendor/bin/phpcs
 
 phpmd:
-	@docker-compose run --rm --no-deps codeception vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode
+	@docker-compose run --rm --no-deps codeception vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode --exclude src/Migrations/*
 
 qa: test phpstan phpcs phpmd
 
@@ -37,7 +43,7 @@ snippets:
 	@docker-compose run --rm codeception ./vendor/bin/codecept gherkin:snippets
 
 dumpdb:
-	@docker-compose exec -e PGPASSWORD=passwd postgres pg_dump -U user budget > tests/_data/pgdump.sql
+	@docker-compose exec -e PGPASSWORD=passwd postgres pg_dump -U user budget > tests/_data/dump.sql
 
 .DEFAULT:
 	@docker-compose run --rm codeception bin/console $@

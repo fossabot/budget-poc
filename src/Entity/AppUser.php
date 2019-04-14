@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
+use App\Doctrine\CreatedAtInterface;
+use App\Doctrine\UpdatedAtInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  */
-class AppUser implements UserInterface
+class AppUser implements UserInterface, CreatedAtInterface, UpdatedAtInterface
 {
     /**
      * @ORM\Id()
@@ -33,6 +35,16 @@ class AppUser implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
     public function getAppUserId(): ?string
     {
@@ -110,5 +122,29 @@ class AppUser implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): CreatedAtInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): UpdatedAtInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

@@ -1,0 +1,3 @@
+parameters:
+  frozen_clock: false
+  frozen_clock_file: '%kernel.project_dir%/var/clock'

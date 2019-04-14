@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Doctrine\CreatedAtInterface;
+use App\Doctrine\UpdatedAtInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
  */
-class Client
+class Client implements CreatedAtInterface, UpdatedAtInterface
 {
     /**
      * @ORM\Id()
@@ -28,6 +30,16 @@ class Client
      * @ORM\OneToMany(targetEntity="App\Entity\Invoice", mappedBy="client_id", orphanRemoval=true)
      */
     private $invoices;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -82,8 +94,32 @@ class Client
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->name;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): CreatedAtInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): UpdatedAtInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

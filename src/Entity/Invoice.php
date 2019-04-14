@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use App\Doctrine\CreatedAtInterface;
+use App\Doctrine\UpdatedAtInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
  */
-class Invoice
+class Invoice implements CreatedAtInterface, UpdatedAtInterface
 {
     /**
      * @ORM\Id()
@@ -47,6 +49,16 @@ class Invoice
      * @ORM\Column(type="integer")
      */
     private $amount_ttc;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
 
     public function getInvoiceId(): ?string
     {
@@ -125,7 +137,31 @@ class Invoice
         return $this;
     }
 
-    public function __toString()
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): CreatedAtInterface
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): UpdatedAtInterface
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function __toString(): string
     {
         return $this->number;
     }
