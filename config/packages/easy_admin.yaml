@@ -2,12 +2,19 @@ easy_admin:
   site_name: 'Easy Budget'
   user:
     name_property_path: 'email'
+  list:
+    actions:
+      - { name: 'edit', icon: 'pencil', label: false }
+      - { name: 'delete', icon: 'trash', label: false }
   entities:
     Client:
       class: App\Entity\Client
       label: 'Clients'
       list:
         title: "List of clients"
+      form:
+        fields:
+          - { property: 'name', label: 'Name' }
     Invoice:
       class: App\Entity\Invoice
       label: 'Invoices'
