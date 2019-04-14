@@ -29,7 +29,7 @@ phpcs:
 	@docker-compose run --rm --no-deps codeception vendor/bin/phpcs
 
 phpmd:
-	@docker-compose run --rm --no-deps codeception vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode
+	@docker-compose run --rm --no-deps codeception vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode --exclude src/Migrations/*
 
 qa: test phpstan phpcs phpmd
 

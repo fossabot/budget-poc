@@ -100,7 +100,7 @@ jobs:
           at: /home/circleci
       - run:
           name: PHP Mess Detector
-          command: vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode
+          command: vendor/bin/phpmd src text cleancode,codesize,design,naming,unusedcode --exclude src/Migrations/*
 
   builds_completed:
     docker:

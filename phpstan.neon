@@ -3,3 +3,5 @@ parameters:
         - src
         - tests/unit
     level: max
+    excludes_analyse:
+        - src/Migrations
