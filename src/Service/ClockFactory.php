@@ -18,14 +18,17 @@ class ClockFactory
      * @throws Exception
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
-    public function getClock(bool $frozen_clock = false, string $frozen_clock_file =''): ClockInterface
+    public function getClock(bool $frozen_clock = false, string $frozen_clock_file = ''): ClockInterface
     {
         if ($frozen_clock) {
-            return new FrozenClock(
-                is_readable($frozen_clock_file) ?
-                    new DateTimeImmutable(file_get_contents($frozen_clock_file)) :
-                    new DateTimeImmutable('now')
-            );
+            if (is_readable($frozen_clock_file)) {
+                $clock = file_get_contents($frozen_clock_file);
+            }
+            if (empty($clock)) {
+                $clock = 'now';
+            }
+
+            return new FrozenClock(new DateTimeImmutable($clock));
         }
         return new SystemClock();
     }
