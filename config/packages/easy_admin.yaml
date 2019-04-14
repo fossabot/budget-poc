@@ -2,6 +2,8 @@ easy_admin:
   site_name: 'Easy Budget'
   user:
     name_property_path: 'email'
+  formats:
+    datetime: 'd/m/Y H:i'
   list:
     actions:
       - { name: 'edit', icon: 'pencil', label: false }
